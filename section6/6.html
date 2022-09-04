@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, k) {
+        // 앞에서 꺼내고 해당되지 않는 왕자를 뒤에 다시 집어넣는다.
+        // queue의 추가 push, 삭제 shift
+        let answer = 0;
+        // value, index
+        let queue = Array.from({ length: n }, (v, i) => i + 1);
+
+        while (queue.length) {
+          for (let i = 1; i < k; i++) {
+            queue.push(queue.shift());
+          }
+          queue.shift();
+          if (queue.length === 1) {
+            answer = queue.shift();
+          }
+        }
+        return answer;
+      }
+
+      console.log(solution(8, 3));
+    </script>
+  </body>
+</html>

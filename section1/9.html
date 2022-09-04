@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 문자열 복사는...? => 값이 복사된다.
+      function solution(s) {
+        // let answer = "";
+        // for (let text of s) {
+        //   if (text === "A") {
+        //     answer += "#";
+        //   } else {
+        //     answer += text;
+        //   }
+        // }
+        // replace + 정규표현식
+        let answer = s;
+        answer = answer.replace(/A/g, "#");
+        return answer;
+      }
+
+      let str = "BANANA";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>
+
+<!-- <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>출력결과</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                let answer=s;
+                answer=answer.replace(/A/g, "#");
+                return answer;
+            }
+            
+            let str="BANANA";
+            console.log(solution(str));
+        </script>
+    </body>
+</html> -->

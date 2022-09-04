@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        if (arr.length < 3 || arr.length > 1000) {
+          return;
+        }
+        // let answer = [];
+        // for (let i = 0; i < arr.length; i++) {
+        //   let rank = arr.length;
+        //   for (let j = 0; j < arr.length; j++) {
+        //     if (i !== j) {
+        //       if (arr[i] >= arr[j]) {
+        //         rank--;
+        //       }
+        //     }
+        //   }
+        //   answer.push(rank);
+        // }
+        let n = arr.length;
+        // 배열 초기화
+        let answer = Array.from({ length: n }, () => 1);
+        for (let i = 0; i < n; i++) {
+          for (let j = 0; j < n; j++) {
+            if (arr[j] > arr[i]) {
+              answer[i]++;
+            }
+          }
+        }
+        return answer;
+      }
+
+      let arr = [87, 89, 92, 100, 76];
+      let arr2 = [87, 92, 92, 92, 100];
+      console.log(solution(arr));
+      console.log(solution(arr2));
+    </script>
+  </body>
+</html>

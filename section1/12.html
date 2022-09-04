@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s) {
+        if (s.length >= 100) {
+          return;
+        }
+        let answer = "";
+        for (const x of s) {
+          //   if (x === x.toUpperCase()) {
+          //     answer += x;
+          //   } else {
+          //     answer += x.toUpperCase();
+          //   }
+          // 아스키 코드로 풀어보기
+          let num = x.charCodeAt();
+          num >= 97 && num <= 122 ? (answer += x.toUpperCase()) : (answer += x);
+        }
+
+        return answer;
+      }
+
+      let str = "ItisTimeToStudy";
+      console.log(solution(str));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(str) {
+        // isNaN 사용해서 바로 넣어주기
+        let answer = "";
+        if (str.length > 50) {
+          return;
+        }
+
+        let ary = str.split("");
+        for (const x of ary) {
+          if (parseInt(x) || parseInt(x) === 0) {
+            answer += x;
+          }
+        }
+        return parseInt(answer);
+      }
+
+      let str = "g0en2T0s8eSoft";
+      let str2 = "gg111";
+      console.log(solution(str));
+      console.log(solution(str2));
+    </script>
+  </body>
+</html>

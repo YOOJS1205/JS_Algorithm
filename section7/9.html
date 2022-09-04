@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 두 가지 이벤트로 나눈다 (도착: s, 떠남: e)
+      // e, s 순으로 정렬하고 s를 만나면 ++, e를 만나면 --
+      // 가장 큰 cnt 값을 answer로 채택한다.
+      //   function solution(times) {
+      //     let answer = Number.MIN_SAFE_INTEGER;
+      //     let sortAry = times.sort((a, b) => a[1] - b[1]);
+      //     for (let i = 0; i < sortAry.length - 1; i++) {
+      //       let tmp = 1;
+      //       for (let j = i + 1; j < sortAry.length; j++) {
+      //         if (sortAry[i][1] > sortAry[j][0]) {
+      //           tmp++;
+      //         }
+      //       }
+      //       if (tmp > answer) {
+      //         answer = tmp;
+      //       }
+      //     }
+      //     return answer;
+      //   }
+
+      function solution(times) {
+        let answer = Number.MIN_SAFE_INTEGER;
+        let timeline = [];
+        for (let x of times) {
+          timeline.push([x[0], "s"]);
+          timeline.push([x[1], "e"]);
+        }
+        timeline.sort((a, b) => {
+          if (a[0] !== b[0]) {
+            return a[0] - b[0];
+          } else {
+            return a[1].charCodeAt() - b[1].charCodeAt();
+          }
+        });
+
+        let cnt = 0;
+        for (const x of timeline) {
+          if (x[1] === "s") {
+            cnt++;
+          } else {
+            cnt--;
+          }
+          if (cnt > answer) {
+            answer = cnt;
+          }
+        }
+        console.log(timeline);
+        return answer;
+      }
+
+      let arr = [
+        [14, 18],
+        [12, 15],
+        [15, 20],
+        [20, 30],
+        [5, 15],
+      ];
+      let arr2 = [
+        [0, 10],
+        [5, 10],
+        [10, 20],
+        [15, 20],
+      ];
+      console.log(solution(arr));
+      console.log(solution(arr2));
+    </script>
+  </body>
+</html>

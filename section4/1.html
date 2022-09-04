@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(n, arr) {
+        if (n < 3 || n > 100) {
+          return;
+        }
+        // 최댓값을 구할 때 가장 작은 값으로 초기화를 한다.
+        let answer,
+          max = Number.MIN_SAFE_INTEGER;
+        for (let x of arr) {
+          // x는 그대로 두어야 하므로 임시 변수 선언
+          // 몫이 0이 될 때까지 0으로 나누기
+          let sum = x
+              .toString()
+              .split("")
+              .reduce((a, b) => a + Number(b), 0),
+            tmp = x;
+          if (sum > max) {
+            max = sum;
+            answer = x;
+          } else if (sum === max) {
+            if (x > answer) {
+              answer = x;
+            }
+          }
+        }
+        return answer;
+      }
+
+      let arr = [128, 460, 603, 40, 521, 137, 123];
+      console.log(solution(7, arr));
+    </script>
+  </body>
+</html>

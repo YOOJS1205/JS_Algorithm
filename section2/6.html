@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        // 최댓값을 구해야하므로 최솟값을 초기화
+        let answer = Number.MIN_SAFE_INTEGER;
+        let n = arr.length;
+        let rowSum = (colSum = 0);
+
+        for (let i = 0; i < n; i++) {
+          rowSum = colSum = 0;
+          for (let j = 0; j < n; j++) {
+            // 행 고정, 열 더하기
+            rowSum += arr[i][j];
+            // 열 고정, 행 더하기
+            colSum += arr[j][i];
+          }
+          answer = Math.max(answer, rowSum, colSum);
+        }
+
+        rowSum = colSum = 0;
+        for (let i = 0; i < n; i++) {
+          rowSum += arr[i][i];
+          colSum += arr[i][n - 1 - i];
+        }
+        answer = Math.max(answer, rowSum, colSum);
+        return answer;
+      }
+
+      let arr = [
+        [10, 13, 10, 12, 15],
+        [12, 39, 30, 23, 11],
+        [11, 25, 50, 53, 15],
+        [19, 27, 29, 37, 27],
+        [19, 13, 30, 13, 19],
+      ];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>

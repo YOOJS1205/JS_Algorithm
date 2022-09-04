@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(day, arr) {
+        let answer = 0;
+        for (const x of arr) {
+          if (x % 10 === day) {
+            answer++;
+          }
+        }
+
+        return answer;
+      }
+
+      arr = [25, 23, 11, 47, 53, 17, 33];
+      arr2 = [10, 20, 30, 34, 23, 60];
+      console.log(solution(3, arr));
+      console.log(solution(0, arr2));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 값을 반환하는 재귀함수
+      function solution(n) {
+        let answer = 0;
+        function DFS(n) {
+          if (n === 1) {
+            return 1;
+          } else {
+            return n * DFS(n - 1);
+          }
+        }
+
+        answer = DFS(n);
+        return answer;
+      }
+
+      console.log(solution(5));
+      console.log(solution(10));
+    </script>
+  </body>
+</html>

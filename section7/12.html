@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // c: 말의 마리 수 arr: 마구간 좌표
+      function count(stable, dist) {
+        let cnt = 1;
+        let ep = stable[0];
+        for (let i = 1; i < stable.length; i++) {
+          if (stable[i] - ep >= dist) {
+            cnt++;
+            ep = stable[i];
+          }
+        }
+        return cnt;
+      }
+      function solution(c, stable) {
+        let answer;
+        stable.sort((a, b) => a - b);
+        let lt = 1;
+        let rt = Math.max(...stable);
+        // mid는 말과 말 사이의 가장 가까운 거리를 지정한 것
+        // count 함수는 배치된 말의 수 (작으면 mid값이 채택되지 못함)
+        while (lt <= rt) {
+          let mid = parseInt((lt + rt) / 2);
+          if (count(stable, mid) >= c) {
+            answer = mid;
+            lt = mid + 1;
+          } else {
+            rt = mid - 1;
+          }
+        }
+        return answer;
+      }
+      let arr = [1, 2, 8, 4, 9];
+      console.log(solution(3, arr));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 자바스크립트에서의 스택은 push, pop 으로 구현
+      // 여는 괄호는 stack에 push, 닫는 괄호는 stack에서 pop
+      function solution(s) {
+        let answer = "YES";
+        let stack = [];
+        for (let x of s) {
+          if (x === "(") stack.push(x);
+          else {
+            if (!stack.length) {
+              return "NO";
+            }
+            stack.pop();
+          }
+        }
+        if (stack.length) return "NO";
+        return answer;
+      }
+
+      let a = "(()";
+      console.log(solution(a));
+    </script>
+  </body>
+</html>

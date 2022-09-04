@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, arr) {
+        let answer = [];
+        let n = arr.length;
+        let check = Array.from({ length: n }, () => 0);
+        let tmp = Array.from({ length: m }, () => 0);
+
+        function DFS(index) {
+          if (index === m) {
+            answer.push([...tmp]);
+          } else {
+            for (let i = 0; i < n; i++) {
+              if (!check[i]) {
+                check[i] = 1;
+                tmp[index] = arr[i];
+                DFS(index + 1);
+                check[i] = 0;
+              }
+            }
+          }
+        }
+        DFS(0);
+        return answer;
+      }
+
+      let arr = [3, 6, 9];
+      console.log(solution(2, arr));
+    </script>
+  </body>
+</html>

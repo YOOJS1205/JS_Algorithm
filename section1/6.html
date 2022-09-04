@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(arr) {
+        let answer = [];
+        let sum = 0,
+          min = 1000;
+        // for (let i = 0; i < arr.length; i++) {
+        //   if (arr[i] % 2) {
+        //     answer.push(arr[i]);
+        //   }
+        // }
+        // for...of문
+        for (const x of arr) {
+          if (x % 2) {
+            sum += x;
+            if (x < min) {
+              min = x;
+            }
+          }
+        }
+        // sum = answer.reduce((a, b) => a + b, 0);
+        // min = answer.sort((a, b) => a - b)[0];
+        return [sum, min];
+      }
+
+      arr = [12, 77, 38, 41, 53, 92, 85];
+      console.log(solution(arr));
+    </script>
+  </body>
+</html>

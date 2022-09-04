@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(m, arr) {
+        let answer = Number.MAX_SAFE_INTEGER;
+        let n = arr.length;
+
+        function DFS(index, sum) {
+          // 이미 정해진 답보다 크면 굳이 계속 할 필요가 없음
+          if (index > answer) {
+            return;
+          }
+          if (sum >= m) {
+            answer = Math.min(answer, index);
+          } else {
+            for (let i = 0; i < n; i++) {
+              DFS(index + 1, sum + arr[i]);
+            }
+          }
+        }
+        DFS(0, 0);
+        return answer;
+      }
+
+      let arr = [1, 2, 5];
+      let arr2 = [1, 2, 3, 4];
+      console.log(solution(15, arr));
+      console.log(solution(10, arr2));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      function solution(s, t) {
+        // 문자열 길이 예외처리
+        if (s.length >= 100) {
+          return;
+        }
+        // let answer = 0;
+        // for (const x of s) {
+        //   if (x === t) {
+        //     answer++;
+        //   }
+        // }
+        // 내장함수 split (해당 문자를 기준으로 쪼개기)
+        // 끝에 있어도 빈 문자열이 생기므로 신경쓰지 않아도 된다.
+        let answer = s.split(t).length - 1;
+
+        return answer;
+      }
+
+      let str = "COMPUTERPROGRAMMING";
+      console.log(solution(str, "R"));
+    </script>
+  </body>
+</html>
