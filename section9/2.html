@@ -14,9 +14,21 @@
           graph[a][b] = 1;
         }
 
-        function DFS(L) {}
+        function DFS(v) {
+          if (v === n) {
+            answer++;
+          } else {
+            for (let i = 1; i <= n; i++) {
+              if (graph[v][i] === 1 && !check[i]) {
+                check[i] = 1;
+                DFS(i);
+                check[i] = 0;
+              }
+            }
+          }
+        }
+        check[1] = 1;
         DFS(1);
-        console.log(graph);
         return answer;
       }
 

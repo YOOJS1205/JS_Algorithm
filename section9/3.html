@@ -6,6 +6,30 @@
   <body>
     <script>
       function solution(n, arr) {
+        let answer = 0;
+        // 1번 index부터 사용하므로 n + 1
+        // 인접 리스트에서는 빈 배열로 초기화
+        let graph = Array.from(Array(n + 1), () => Array());
+        let check = Array.from({ length: n + 1 }, () => 0);
+        for (const [a, b] of arr) {
+          graph[a].push(b);
+        }
+
+        function DFS(v) {
+          if (v === n) {
+            answer++;
+          } else {
+            for (let i = 0; i < graph[v].length; i++) {
+              if (check[graph[v][i]] === 0) {
+                check[graph[v][i]] = 1;
+                DFS(graph[v][i]);
+                check[graph[v][i]] = 0;
+              }
+            }
+          }
+        }
+        check[1] = 1;
+        DFS(1);
         return answer;
       }
 
