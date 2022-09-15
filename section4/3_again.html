@@ -1,0 +1,42 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>출력결과</title>
+  </head>
+  <body>
+    <script>
+      // 완전 탐색의 대표적인 문제
+      function solution(test) {
+        let studentNum = test[0].length;
+        let answer = 0;
+        for (const x of test) {
+          for (let i = 1; i <= studentNum; i++) {
+            let num = 0;
+            for (let j = 1; j <= studentNum; j++) {
+              if (x.indexOf(i) < x.indexOf(j)) {
+                num++;
+              }
+            }
+            if (num === 3) {
+              answer++;
+            }
+          }
+        }
+        return answer;
+      }
+
+      let arr = [
+        [3, 4, 1, 2],
+        [4, 3, 2, 1],
+        [3, 1, 4, 2],
+      ];
+      let arr2 = [
+        [1, 2, 3, 4],
+        [4, 3, 2, 1],
+        [2, 4, 3, 1],
+      ];
+      console.log(solution(arr));
+      console.log(solution(arr2));
+    </script>
+  </body>
+</html>
