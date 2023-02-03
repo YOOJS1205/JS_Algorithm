@@ -6,17 +6,17 @@
   <body>
     <script>
       function solution(v) {
-        let answer;
-        function DFS(v) {
-          if (v > 7) {
+        let answer = '';
+        function DFS(num) {
+          if (num > 7) {
             return;
           } else {
-            DFS(v * 2);
-            DFS(v * 2 + 1);
-            console.log(v);
+            answer += num + ' ';
+            DFS(num * 2);
+            DFS(num * 2 + 1);
           }
         }
-        DFS(v);
+        DFS(1);
         return answer;
       }
 
