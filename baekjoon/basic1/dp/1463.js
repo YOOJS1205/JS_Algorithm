@@ -7,7 +7,9 @@ function solution(num) {
   dy[3] = 1;
 
   for (let i = 4; i <= num; i++) {
-    if (i % 3 === 0) {
+    if (i % 3 === 0 && i % 2 === 0) {
+      dy[i] = Math.min(dy[i - 1] + 1, dy[i / 3] + 1, dy[i / 2] + 1);
+    } else if (i % 3 === 0) {
       dy[i] = Math.min(dy[i - 1] + 1, dy[i / 3] + 1);
     } else if (i % 2 === 0) {
       dy[i] = Math.min(dy[i - 1] + 1, dy[i / 2] + 1);
@@ -16,7 +18,6 @@ function solution(num) {
     }
   }
 
-  console.log(dy);
   return dy[num];
 }
 
